@@ -18,22 +18,26 @@ app.listen(port, () => {
 
 //API END POINT - Saves the Duck Info into the database
 app.post('/saveDuckInfo', async (req, res) => {
-  console.log(req.body.payload);
-  const data = req.body.payload;
-  await prisma.duck_submissions.create({
-    data:{
-      time: new Date(data.time),
-      foodType: data.foodType,
-      location: data.location,
-      numberOfDucks: data.numberOfDucks,
-      quantityOfFood: data.quantityOfFood,
-    }
-  })
-  res.send('DataSaved!')
+  try {
+    const data = req.body;
+    await prisma.duck_submissions.create({
+      data: {
+        time: new Date(data.time),
+        foodType: data.foodType,
+        location: data.location,
+        numberOfDucks: data.numberOfDucks,
+        quantityOfFood: data.quantityOfFood,
+      }
+    })
+    res.send('Data Saved')
+  } catch {
+    res.send('Data Not Saved')
+  }
+
 });
 
 //API END POINT - returns all the duck info in the database.
 app.get('/getDuckInfo', async (req, res) => {
-  const allData= await prisma.duck_submissions.findMany({});
+  const allData = await prisma.duck_submissions.findMany({});
   res.send(allData);
 });
