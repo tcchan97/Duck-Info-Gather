@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Button, Space, DatePicker, Card, Form, Input, Checkbox, TimePicker, InputNumber } from 'antd';
 import { CiCircleFilled } from '@ant-design/icons';
+import logo from '../public/duck-logo.png'
 
 const config = {
   rules: [
@@ -47,58 +48,69 @@ export default function Home() {
   };
   return (
     <div className={styles.container}>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 15,
-        }}
-        wrapperCol={{
-          span: 50,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item name="time" label="Time Ducks were fed?" {...config}>
-          <TimePicker />
-        </Form.Item>
-
-
-        <Form.Item
-          label="Type of food ducks were fed?"
-          name="foodType"
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Where were the ducks fed?"
-          name="location"
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item name="numberOfDucks" label="How many ducks were fed?" rules={[{ type: 'number', min: 0, max: 1000 }]}>
-          <InputNumber />
-        </Form.Item>
-
-        <Form.Item name="quantityOfFood" label="How much food the ducks were fed? (Kg)" rules={[{ type: 'number', min: 0, max: 1000 }]}>
-          <InputNumber />
-        </Form.Item>
-
-        <Form.Item
-          wrapperCol={{
-            offset: 10,
-            span: 16,
+      <div className={styles.SecondaryContainer}>
+        <div className={styles.LogoContainer}>
+          <div className={styles.Logo}><Image src={logo}/></div>
+          <div className={styles.LogoTitle}>Ducky Logger</div>
+        </div>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 30,
+            offset: 0,
           }}
+          wrapperCol={{
+            span: 200,
+            offset:0,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          labelAlign="left"
+          onFinish={onFinish}
+          layout="vertical"
+          onFinishFailed={onFinishFailed}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item name="time" label="Time ducks were fed?" {...config}>
+            <TimePicker />
+          </Form.Item>
+
+
+          <Form.Item
+            label="Type of food ducks were fed?"
+            name="foodType"
+          >
+            <Input placeholder="Type of Food"/>
+          </Form.Item>
+
+          <Form.Item
+            label="Where were the ducks fed?"
+            
+            name="location"
+          >
+            <Input placeholder="Location"/>
+          </Form.Item>
+
+          <Form.Item name="numberOfDucks" label="How many ducks were fed?" rules={[{ type: 'number', min: 0, max: 1000 }]}>
+            <InputNumber placeholder="# of Ducks"/>
+          </Form.Item>
+
+          <Form.Item name="quantityOfFood" label="How much food the ducks were fed? (Kg)" rules={[{ type: 'number', min: 0, max: 1000 }]}>
+            <InputNumber placeholder="(Kg)" />
+          </Form.Item>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 10,
+              span: 16,
+            }}
+          >
+            <Button className={styles.submitButton} type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   )
 }
