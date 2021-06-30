@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Form.module.css'
 import { Button, Space, DatePicker, Card, Form, Input, Checkbox, TimePicker, InputNumber } from 'antd';
-import { CiCircleFilled } from '@ant-design/icons';
 import logo from '../public/duck-logo.png'
+import { useRouter } from 'next/router'
 
+// Set configuration for antd forms
 const config = {
   rules: [
     {
@@ -16,8 +17,10 @@ const config = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const onChange = () => { };
 
+  // When submitting the form send it to the nextjs api - saveDuck -> nodejs backend 
   const onFinish = async (values) => {
     const payload = {
       time: values.time,
@@ -36,10 +39,12 @@ export default function Home() {
       });
       if (res.status === 200) {
         console.log("Saved Duck Data");
+        router.push('/submitted')
       }
     }
     catch {
       console.log("Data not Saved");
+      router.push('/submittedError')
     }
   };
 

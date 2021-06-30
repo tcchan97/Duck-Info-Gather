@@ -1,0 +1,84 @@
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: lightyellow;
+}
+.SecondaryContainer{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LogoContainer{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.Logo{
+  width: 150px;
+}
+
+.LogoTitle{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.submitButton{
+  background-color: #ffe623;
+  color: #71535c;
+  border: none;
+}
+
+.submitButton:hover{
+  background-color: #ef8031;
+  color: white;
+  border: none;
+}
+
+.submitButton:focus{
+  background-color: #ef8031;
+  color: white;
+  border: none;
+}
+
+.checkMark{
+  font-size: 60px;
+  color: #ef8031;
+}
+
+.ErrorMark{
+  font-size: 60px;
+  color: #cc0000;
+}
+
+.submitTitle{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+  }
+}

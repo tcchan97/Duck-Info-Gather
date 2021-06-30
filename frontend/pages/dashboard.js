@@ -1,10 +1,11 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Dashboard.module.css'
 import { Table, Tag, Space } from 'antd';
 import moment from 'moment';
 import Image from 'next/image'
 import logo from '../public/duck-logo.png'
 import React, { useState, useEffect } from 'react';
 
+// Setting table columns
 const columns = [
   {
     title: 'Time',
@@ -53,6 +54,7 @@ export default function dashboard(props) {
 
 }
 
+// Import the data before page loads.
 export async function getServerSideProps(context) {
   const result = await fetch('http://localhost:8000/getDuckInfo', { method: "GET" })
   const data = await result.json();
