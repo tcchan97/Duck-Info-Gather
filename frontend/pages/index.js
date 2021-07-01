@@ -29,6 +29,7 @@ export default function Home() {
       numberOfDucks: values.numberOfDucks ? values.numberOfDucks : 0,
       quantityOfFood: values.quantityOfFood ? values.quantityOfFood : 0,
     }
+    // Post to the API
     try {
       const res = await fetch('http://localhost:3000/api/saveDuck', {
         method: 'POST',
@@ -37,11 +38,13 @@ export default function Home() {
         },
         body: JSON.stringify(payload),
       });
+      // If Success then redirect success
       if (res.status === 200) {
         console.log("Saved Duck Data");
         router.push('/submitted')
       }
     }
+    //If fail then redirect to fail
     catch {
       console.log("Data not Saved");
       router.push('/submittedError')
@@ -50,7 +53,10 @@ export default function Home() {
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+    router.push('/submittedError')
   };
+
+  
   return (
     <div className={styles.container}>
       <div className={styles.SecondaryContainer}>
