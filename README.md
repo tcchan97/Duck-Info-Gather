@@ -25,6 +25,18 @@ If deploying on service, make sure these enviroment variables are put in.
 
 ```
 DATABASE_URL="mysql://username:password@serverip:port/databaseName"
+
+The database should include a table called 'duck_submissions' with this schema.
+
+TABLE duck_submission
+-------------------------------
+id                INT
+time              DATETIME
+foodType          STRING
+location          STRING
+numberOfDuck      STRING
+quantityOfFood    STRING
+
 ```
 
 ## Running the app
